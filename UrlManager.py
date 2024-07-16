@@ -1,7 +1,7 @@
 class URLManager:
     def __init__(self, url_file, index_file):
         self.url_file = url_file
-        self.index_file = index_file
+        self.indice_file = index_file
         self.coppie_urls = self.leggi_urls()
         self.lines = self.leggi_file()
         self.indice_corrente = self.leggi_indice()
@@ -19,13 +19,13 @@ class URLManager:
 
     def leggi_indice(self):
         try:
-            with open(self.index_file, "r") as file:
+            with open(self.indice_file, "r") as file:
                 return int(file.read())
         except FileNotFoundError:
             return 0
 
     def salva_indice(self, indice):
-        with open(self.index_file, "w") as file:
+        with open(self.indice_file, "w") as file:
             file.write(str(indice))
 
     def aggiorna_lista(self, indice_corrente, button_text):

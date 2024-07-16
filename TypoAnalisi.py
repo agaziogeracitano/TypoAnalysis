@@ -147,8 +147,8 @@ class AnalisiTypo:
 
     def mostra_immagini(self):
         url_originale, url_typo = self.coppie_urls[self.indice_corrente]
-        original_ready = os.path.exists(f"fotositi/{url_originale}.png")
-        typo_ready = os.path.exists(f"fotositi/{url_typo}.png")
+        original_ready = os.path.exists(f"foto_siti/{url_originale}.png")
+        typo_ready = os.path.exists(f"foto_siti/{url_typo}.png")
         if original_ready and typo_ready:
             self.aggiornaImageOriginale(url_originale)
             self.aggiornaImageTypo(url_typo)
@@ -185,7 +185,7 @@ class AnalisiTypo:
         url_typo_label.grid(row=1, column=1, padx=10)
 
     def aggiornaImageOriginale(self, url_originale):
-        image1 = Image.open(f"fotositi/{url_originale}.png").resize((500, 500))
+        image1 = Image.open(f"foto_siti/{url_originale}.png").resize((500, 500))
         self.photo1 = ImageTk.PhotoImage(image1)
         self.label1.configure(image=self.photo1)
         url_originale_label = tk.Label(self.image_text_frame, text=f"URL ORIGINALE: {url_originale}")
@@ -194,7 +194,7 @@ class AnalisiTypo:
 
 
     def aggiornaImageTypo(self, url_typo):
-        image2 = Image.open(f"fotositi/{url_typo}.png").resize((500, 500))
+        image2 = Image.open(f"foto_siti/{url_typo}.png").resize((500, 500))
         self.photo2 = ImageTk.PhotoImage(image2)
         self.label2.configure(image=self.photo2)
         url_typo_label = tk.Label(self.image_text_frame, text=f"URL TYPO:     {url_typo}")
@@ -236,7 +236,7 @@ class AnalisiTypo:
 
 
     def elimina_foto(self):
-        foto_dir = "fotositi"
+        foto_dir = "foto_siti"
         if os.path.exists(foto_dir):
             for filename in os.listdir(foto_dir):
                 file_path = os.path.join(foto_dir, filename)
@@ -248,8 +248,8 @@ class AnalisiTypo:
 
 
 def main():
-    if not os.path.exists("fotositi"):
-        os.makedirs("fotositi")
+    if not os.path.exists("foto_siti"):
+        os.makedirs("foto_siti")
     root = tk.Tk()
     app = AnalisiTypo(root)
     root.protocol("WM_DELETE_WINDOW", app.chiudi_finestra)

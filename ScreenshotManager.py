@@ -45,7 +45,7 @@ class ScreenshotManager:
                 driver.save_screenshot(f"fotositi/{url}.png")
                 print(url + " salvato con http")
             except WebDriverException:
-                print(f"Errore durante il caricamento di {url} con http: il sito è down")
+                print(f"Errore durante il caricamento di {url} con http, il sito è down")
                 image1 = Image.new("RGB", (500, 500), "yellow")
                 image1.save(f"fotositi/{url}.png")
                 print(url + " segnaposto salvato")
